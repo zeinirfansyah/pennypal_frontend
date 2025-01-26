@@ -9,39 +9,43 @@ import { Button } from "@/components/atoms/button";
 
 export const RegisterForm: React.FC<IRegisterFormProps> = ({
   isSubmitting,
-  message,
   onSubmit,
 }) => {
   return (
     <div>
-      {message && <div>{message}</div>}
       <Formik
         initialValues={initialValues}
         validationSchema={registerSchema}
         onSubmit={onSubmit}
       >
         {() => (
-          <Form>
-            <div className="w-full flex flex-col py-2 gap-2">
-              <FormikInput name="fullname" label="Full Name" />
-              <FormikInput name="username" label="Username" />
-              <div className="flex flex-col lg:flex-row gap-2">
-                <FormikInput name="email" label="Email" />
-                <FormikInput name="phone" label="Phone" />
+          <>
+            <Form>
+              <div className="w-full flex flex-col py-2 gap-2">
+                <FormikInput name="fullname" label="Full Name" />
+                <FormikInput name="username" label="Username" />
+                <div className="flex flex-col lg:flex-row gap-2">
+                  <FormikInput name="email" label="Email" />
+                  <FormikInput name="phone" label="Phone" />
+                </div>
+                <div className="flex flex-col lg:flex-row gap-2">
+                  <FormikInput
+                    name="password"
+                    label="Password"
+                    type="password"
+                  />
+                  <FormikInput
+                    name="confirm_password"
+                    label="Confirm Password"
+                    type="password"
+                  />
+                </div>
+                <Button disabled={isSubmitting} className="text-sm my-2">
+                  {isSubmitting ? "Registering..." : "Register"}
+                </Button>
               </div>
-              <div className="flex flex-col lg:flex-row gap-2">
-                <FormikInput name="password" label="Password" type="password" />
-                <FormikInput
-                  name="confirm_password"
-                  label="Confirm Password"
-                  type="password"
-                />
-              </div>
-              <Button disabled={isSubmitting} className="text-sm my-2">
-                {isSubmitting ? "Registering..." : "Register"}
-              </Button>
-            </div>
-          </Form>
+            </Form>
+          </>
         )}
       </Formik>
     </div>

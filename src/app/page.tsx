@@ -16,8 +16,8 @@ export default function Home() {
     setIsSubmitting(true);
     setMessage(null);
     try {
-      const response = await register(values);
-      setMessage(response.message);
+      await register(values);
+      setIsLoginForm(true);
     } catch (error) {
       if (error instanceof AxiosError) {
         const errorMessage =
@@ -32,6 +32,8 @@ export default function Home() {
       setIsSubmitting(false);
     }
   };
+
+  console.log(isLoginForm);
 
   return (
     <>
@@ -53,17 +55,6 @@ export default function Home() {
                 <div className="w-full lg:max-w-[500px] my-6 border rounded-lg flex flex-col gap-4">
                   <div className="flex flex-row border-b gap-1 rounded-t-lg justify-center items-center">
                     <div
-                      onClick={() => setIsLoginForm(true)}
-                      className={` ${
-                        isLoginForm
-                          ? "bg-slate-100 cursor-default text-blue-500"
-                          : "cursor-poiwnter"
-                      } flex gap-2 rounded-ss-md hover:bg-slate-100 transition-all duration-300 w-full justify-center items-center py-4 `}
-                    >
-                      <UserPenIcon size={16} />
-                      <h2 className="text-sm">Register</h2>
-                    </div>
-                    <div
                       onClick={() => setIsLoginForm(false)}
                       className={` ${
                         isLoginForm
@@ -71,13 +62,29 @@ export default function Home() {
                           : "bg-slate-100 cursor-default text-blue-500"
                       } flex gap-2 rounded-se-md hover:bg-slate-100 transition-all duration-300 w-full justify-center items-center py-4 `}
                     >
+                      <UserPenIcon size={16} />
+                      <h2 className="text-sm">Register</h2>
+                    </div>
+                    <div
+                      onClick={() => setIsLoginForm(true)}
+                      className={` ${
+                        isLoginForm
+                          ? "bg-slate-100 cursor-default text-blue-500"
+                          : "cursor-pointer"
+                      } flex gap-2 rounded-ss-md hover:bg-slate-100 transition-all duration-300 w-full justify-center items-center py-4 `}
+                    >
                       <LogInIcon size={16} />
                       <h2 className="text-sm">Login</h2>
                     </div>
                   </div>
-                  <div className="w-full px-6 py-8 lg:min-w-[500px]">
-                    {!isLoginForm === false ? (
+                  <div className="w-full px-6 pb-8 lg:min-w-[50px]">
+                    {isLoginForm === false ? (
                       <>
+                        {message && (
+                          <div className="text-sm text-red-500 flex justify-end">
+                            {message}
+                          </div>
+                        )}
                         <RegisterForm
                           isSubmitting={isSubmitting}
                           message={message}
@@ -86,7 +93,7 @@ export default function Home() {
                         <div>
                           <span
                             className="text-sm text-gray-500 hover:text-gray-700 cursor-pointer"
-                            onClick={() => setIsLoginForm(false)}
+                            onClick={() => setIsLoginForm(true)}
                           >
                             Already have an account?{" "}
                           </span>
