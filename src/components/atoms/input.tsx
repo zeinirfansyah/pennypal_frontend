@@ -10,8 +10,9 @@ export const Input: React.FC<InputProps> = ({ label, error, ...props }) => (
   <div className="relative pb-1 flex flex-col w-full">
     {label && <label className="text-sm mb-1">{label}</label>}
     <input
-      className={`px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-        error ? "border-red-500" : "border-gray-300"
+    placeholder={label}
+      className={`px-3 py-2 text-sm border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+        error ? "border-red-500" : "border-gray-300" 
       }`}
       {...props}
     />

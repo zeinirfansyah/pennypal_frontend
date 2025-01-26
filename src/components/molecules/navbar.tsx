@@ -12,7 +12,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 w-full z-50 bg-white shadow`}>
+      <header className={`sticky top-0 w-full lg:max-h-[20vh] z-50 bg-white shadow`}>
         <nav className="max-w-7xl mx-auto">
           <div className="lg:flex justify-start gap-20 items-center py-6 mx-4">
             <div className="flex items-center justify-between">
@@ -49,6 +49,14 @@ export const Navbar = () => {
                   className="hover:text-blue-500 transition-all duration-300"
                 >
                   Help
+                </Link>
+              </div>
+              <div className="flex lg:items-center flex-col lg:flex-row gap-6 my-6 lg:my-3 text-sm">
+                <Link 
+                  href="/login"
+                  className="hover:text-blue-500 transition-all duration-300"
+                >
+                  Contact us
                 </Link>
               </div>
             </div>
