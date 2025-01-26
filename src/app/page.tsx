@@ -37,11 +37,11 @@ export default function Home() {
     <>
       <Navbar />
       <main>
-        <div className="min-h-[calc(100vh-20vh)] flex justify-center items-center text-sm lg:text-base">
+        <div className="min-h-[calc(100vh-10vh)] flex justify-center items-center text-sm lg:text-base">
           <div className="max-w-7xl mx-auto px-8 lg:px-4 w-full ">
             <div className="my-8 flex flex-col lg:flex-row gap-4">
               <div className="lg:flex flex-col justify-center items-center w-full lg:w-1/3 text-center lg:text-start">
-                <h1 className="text-2xl lg:text-4xl font-semibold mb-4">
+                <h1 className="text-2xl lg:text-3xl font-semibold mb-4">
                   Simplify Your Finances, Achieve Your Goals.
                 </h1>
                 <p className="hidden lg:flex">
